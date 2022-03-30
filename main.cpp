@@ -3,13 +3,23 @@
 #include "algorithms.h"
 #include "data_generation.h"
 
-int main() {
-    std::srand((unsigned) std::time(0));
-    std::vector<double> arr = generateRandom(11.0);
-    quick_sort(arr.begin(), arr.end(), MEDIAN_OF_THREE);
-    for(int i = 0; i < arr.size(); i++) {
-        std::cout << arr[i] << ", ";
+template<typename T>
+void print(T first, T last) {
+    for(;first != last; first++) {
+        std::cout << *first;
+        if(first + 1 != last) {
+            std::cout << ", ";
+        }
     }
     std::cout << std::endl;
+}
+
+int main() {
+    std::srand((unsigned) std::time(0));
+    std::vector<int> arr = generateRandom(1000);
+    print(arr.begin(), arr.end());
+    quick_sort(arr.begin(), arr.end(), MEDIAN_OF_THREE);
+    print(arr.begin(), arr.end());
+    alg::is_sorted(arr.begin(), arr.end());
     return 0;
 }
