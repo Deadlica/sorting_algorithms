@@ -10,6 +10,59 @@
 enum pivot {MEDIAN_OF_THREE, RIGHT_ELEMENT};
 
 template<typename T>
+struct find_median {
+
+//Methods
+    //Constructor
+    find_median(T first, T middle, T last): m_first(first), m_middle(middle), m_last(last), finished(false) {}
+
+    operator T() {
+        return m_middle;
+    }
+
+    bool compare(T e1, T e2, T e3) { //Comparing element 1, 2, 3
+        if((*e1 < *e2 && *e2 < *e3) || (*e3 < *e2 && *e2 < *e1)) {
+            if(*e1 > *e3) {
+                std::iter_swap(e1, e3);
+            }
+            finished = true;
+            return true;
+        }
+        return false;
+    }
+
+    find_median& first() {
+        if(!finished) {
+            if(compare(m_middle, m_first, m_last)) {
+                std::iter_swap(m_first, m_middle);
+            }
+        }
+        return *this;
+    }
+
+    find_median& middle() {
+        if(!finished) {
+            compare(m_first, m_middle, m_last);
+        }
+        return *this;
+    }
+
+    find_median& last() {
+        if(!finished) {
+            if(compare(m_first, m_last, m_middle)) {
+                std::iter_swap(m_middle, m_last);
+            }
+        }
+        return *this;
+    }
+
+private:
+//Members
+    T m_first, m_middle, m_last;
+    bool finished;
+};
+
+template<typename T>
 T partition(T first, T last) {
     T pivot = last;
     T it = first - 1; //outside of array
@@ -25,24 +78,8 @@ T partition(T first, T last) {
 
 template<typename T>
 T find_median_pivot(T first, T middle, T last) {
-    if((*first < *middle && *middle < *last) ||  (*last < *middle && *middle < *first)) { //middle is the median
-        if(*first > *last) {
-            std::iter_swap(first, last); //first and last are in the wrong order
-        }
-    }
-    else if((*middle < *first && *first < *last) || (*last < *first && *first < *middle)) { //first is the median
-        if(*middle > *last) {
-            std::iter_swap(middle, last); //middle and last are in the wrong order
-        }
-        std::iter_swap(first, middle); //Puts median in the middle
-    }
-    else { //last is the median
-        if(*first > *middle) {
-            std::iter_swap(first, middle); //first and middle are in the wrong order
-        }
-        std::iter_swap(middle, last); //Puts median in the middle
-    }
-    return middle; //Returns the pivot
+    find_median<T> comparer(first, middle, last);
+    return comparer.first().middle().last();
 }
 
 template<typename T>
@@ -85,6 +122,7 @@ void quick_sort(T first, T last, pivot method) {
 
     quick_sort(pivot + 1, last, method); //Partitions the right side of the pivot point
 }
+
 namespace alg {
     template<typename T>
     bool is_sorted(T first, T last) {
