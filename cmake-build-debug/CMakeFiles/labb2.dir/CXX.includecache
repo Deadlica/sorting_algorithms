@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/samuel/Documents/c++/DT064G/labb2/algorithms.h
+algorithm
+-
+
+/home/samuel/Documents/c++/DT064G/labb2/data_generation.h
+ctime
+-
+cmath
+-
+vector
+-
+algorithm
+-
+
+/home/samuel/Documents/c++/DT064G/labb2/main.cpp
+iostream
+-
+vector
+-
+algorithms.h
+/home/samuel/Documents/c++/DT064G/labb2/algorithms.h
+data_generation.h
+/home/samuel/Documents/c++/DT064G/labb2/data_generation.h
+
