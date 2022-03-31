@@ -1,1 +1,1 @@
-/usr/bin/c++ -g CMakeFiles/labb2.dir/main.cpp.o -o labb2 
+/usr/bin/c++ -g CMakeFiles/labb2.dir/main.cpp.o CMakeFiles/labb2.dir/timer.cpp.o CMakeFiles/labb2.dir/measurements.cpp.o -o labb2 

@@ -2,6 +2,8 @@
 #include <vector>
 #include "algorithms.h"
 #include "data_generation.h"
+#include "timer.h"
+#include "measurements.h"
 
 template<typename T>
 void print(T first, T last) {
@@ -16,10 +18,12 @@ void print(T first, T last) {
 
 int main() {
     std::srand((unsigned) std::time(0));
-    std::vector<int> arr = generateRandom(1000);
+    std::vector<int> arr = generateOrder(100000);
     print(arr.begin(), arr.end());
     quick_sort(arr.begin(), arr.end(), MEDIAN_OF_THREE);
-    print(arr.begin(), arr.end());
+    //print(arr.begin(), arr.end());
     alg::is_sorted(arr.begin(), arr.end());
+    measurements<int> temp(10);
+    temp(R_QUICK_SORT, CONSTANT);
     return 0;
 }

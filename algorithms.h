@@ -6,14 +6,13 @@
 #define ALGORITHMS_H
 
 #include <algorithm>
+#include <iostream>
 
 enum pivot {MEDIAN_OF_THREE, RIGHT_ELEMENT};
 
 template<typename T>
 struct find_median {
-
-//Methods
-    //Constructor
+public:
     find_median(T first, T middle, T last): m_first(first), m_middle(middle), m_last(last), finished(false) {}
 
     operator T() {
@@ -57,7 +56,6 @@ struct find_median {
     }
 
 private:
-//Members
     T m_first, m_middle, m_last;
     bool finished;
 };
@@ -124,6 +122,11 @@ void quick_sort(T first, T last, pivot method) {
 }
 
 namespace alg {
+    template<typename T>
+    void sort(T first, T last) {
+        std::sort(first, last);
+    }
+
     template<typename T>
     bool is_sorted(T first, T last) {
         for (; first != last - 1; first++) {
