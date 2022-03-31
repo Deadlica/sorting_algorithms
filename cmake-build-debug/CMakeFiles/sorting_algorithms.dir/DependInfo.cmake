@@ -8,9 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/samuel/Documents/c++/DT064G/sorting_algorithms/main.cpp" "/home/samuel/Documents/c++/DT064G/sorting_algorithms/cmake-build-debug/CMakeFiles/labb2.dir/main.cpp.o"
-  "/home/samuel/Documents/c++/DT064G/sorting_algorithms/measurements.cpp" "/home/samuel/Documents/c++/DT064G/sorting_algorithms/cmake-build-debug/CMakeFiles/labb2.dir/measurements.cpp.o"
-  "/home/samuel/Documents/c++/DT064G/sorting_algorithms/timer.cpp" "/home/samuel/Documents/c++/DT064G/sorting_algorithms/cmake-build-debug/CMakeFiles/labb2.dir/timer.cpp.o"
+  "/home/samuel/Documents/c++/DT064G/sorting_algorithms/main.cpp" "/home/samuel/Documents/c++/DT064G/sorting_algorithms/cmake-build-debug/CMakeFiles/sorting_algorithms.dir/main.cpp.o"
+  "/home/samuel/Documents/c++/DT064G/sorting_algorithms/timer.cpp" "/home/samuel/Documents/c++/DT064G/sorting_algorithms/cmake-build-debug/CMakeFiles/sorting_algorithms.dir/timer.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
