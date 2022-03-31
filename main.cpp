@@ -18,12 +18,12 @@ void print(T first, T last) {
 
 int main() {
     std::srand((unsigned) std::time(0));
-    std::vector<int> arr = generateOrder(100000);
-    print(arr.begin(), arr.end());
-    quick_sort(arr.begin(), arr.end(), MEDIAN_OF_THREE);
+    std::vector<int> arr = generateOrder(20000, FALLING);
     //print(arr.begin(), arr.end());
-    alg::is_sorted(arr.begin(), arr.end());
-    measurements<int> temp(10);
-    temp(R_QUICK_SORT, CONSTANT);
+    //quick_sort(arr.begin(), arr.end(), MEDIAN_OF_THREE);
+    //print(arr.begin(), arr.end());
+    //alg::is_sorted(arr.begin(), arr.end());
+    measurements<float> temp(10);
+    temp(MO3_QUICK_SORT, RANDOM);
     return 0;
 }
