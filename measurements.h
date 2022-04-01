@@ -23,21 +23,16 @@ public:
     measurements(size_t N): samples(N), size({(T)20000.1, (T)40000.1, (T)60000.1, (T)80000.1, (T)100000.1, (T)120000.1, (T)140000.1, (T)160000.1, (T)180000.1, (T)200000.1}) {}
 
 
-    void operator()(algorithm method, sorted container) {
-        std::ofstream file("data.txt", std::ios_base::app);
-        if(file.is_open()) {
-            file << setTitle(method) << std::endl << "N\tT[s]\t\tStdev[s]\tSamples" << std::endl;
-            file.close();
-        }
+    void operator()(algorithm algorithm, sorted container) {
         for(auto e: size) {
             m_measurements.clear();
             m_currentSize = e;
             for(int i = 0; i < samples; i++) {
                 generate(container, e);
-                measurements::sort(method);
+                measurements::sort(algorithm);
             }
             m_std_dev = std_dev();
-            exportToFile(method);
+            exportToFile(algorithm, container);
         }
     }
 
@@ -58,8 +53,8 @@ public:
         }
     }
 
-    void sort(algorithm method) {
-        switch(method) {
+    void sort(algorithm algorithm) {
+        switch(algorithm) {
             case INSERTION_SORT:
                 timer.start();
                 insertion_sort(list.begin(), list.end());
@@ -101,8 +96,8 @@ public:
         return std::sqrt((1.0 / (N - 1.0)) * squareSum);
     }
 
-    void exportToFile(algorithm method) {
-        std::ofstream file("data.txt", std::ios_base::app);
+    void exportToFile(algorithm algorithm, sorted container) {
+        std::ofstream file(setTitle(algorithm, container) + ".txt", std::ios_base::app);
         if(file.is_open()) {
             file << (int)m_currentSize << "\t" << m_mean << "\t" << m_std_dev << "\t" << samples << std::endl;
             file.close();
@@ -117,7 +112,7 @@ private:
     std::vector<T> size;
     std::vector<T> list;
 
-    std::string setTitle(algorithm method) {
+    std::string setTitle(algorithm method, sorted container) {
         std::string title;
         switch(method) {
             case INSERTION_SORT:
@@ -134,6 +129,20 @@ private:
                 break;
             case STD_SORT:
                 title = "std::sort";
+                break;
+        }
+        switch(container) {
+            case RANDOM:
+                title += " (random)";
+                break;
+            case SORTED:
+                title += " (sorted)";
+                break;
+            case REVERSE_SORTED:
+                title += " (reverse sorted)";
+                break;
+            case CONSTANT:
+                title += " (constant)";
                 break;
         }
         return title;
