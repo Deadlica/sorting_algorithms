@@ -25,18 +25,10 @@ algorithm
 /home/samuel/Documents/c++/DT064G/sorting_algorithms/main.cpp
 iostream
 -
-vector
--
-algorithms.h
-/home/samuel/Documents/c++/DT064G/sorting_algorithms/algorithms.h
 data_generation.h
 /home/samuel/Documents/c++/DT064G/sorting_algorithms/data_generation.h
 timer.h
 /home/samuel/Documents/c++/DT064G/sorting_algorithms/timer.h
-measurements.h
-/home/samuel/Documents/c++/DT064G/sorting_algorithms/measurements.h
-
-/home/samuel/Documents/c++/DT064G/sorting_algorithms/measurements.cpp
 measurements.h
 /home/samuel/Documents/c++/DT064G/sorting_algorithms/measurements.h
 
