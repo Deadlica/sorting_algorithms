@@ -27,13 +27,16 @@ std::vector<T> generateRandom(T size) {
 template<typename T>
 std::vector<T> generateOrder(T size, order order = RISING) {
     std::vector<T> container;
-    T element = std::rand();
+    /*T element = std::rand();
     element = fmod(element, size + 1);
     for(size_t i = 0; i < size; i++) {
         container.push_back(element);
         T temp = std::rand();
         temp = fmod(temp, size) + 1;
         element += temp;
+    }*/
+    for(size_t i = 0; i < size; i++) {
+        container.push_back(i + 1);
     }
     if(order == FALLING) {std::reverse(container.begin(), container.end());}
     return container;

@@ -47,6 +47,5 @@ int main() {
     tester(STD_SORT, SORTED);
     tester(STD_SORT, REVERSE_SORTED);
     tester(STD_SORT, CONSTANT);
-
     return 0;
 }
